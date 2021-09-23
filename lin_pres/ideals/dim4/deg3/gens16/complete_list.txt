@@ -1,0 +1,1 @@
+monomialIdeal(a^3,a^2*b,a*b^2,b^3,a^2*c,b^2*c,a*c^2,b*c^2,c^3,a^2*d,b^2*d,c^2*d,a*d^2,b*d^2,c*d^2,d^3)

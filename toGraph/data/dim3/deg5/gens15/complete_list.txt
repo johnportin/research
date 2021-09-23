@@ -1,0 +1,1 @@
+monomialIdeal(a^5,a^4*b,a^3*b^2,a^2*b^3,a*b^4,b^5,a^4*c,b^4*c,a^3*c^2,b^3*c^2,a^2*c^3,b^2*c^3,a*c^4,b*c^4,c^5)
