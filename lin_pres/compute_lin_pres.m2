@@ -5,7 +5,8 @@ load "lin_pres/parameters.m2";
 load "common_functions/isLinearlyPresented.m2";
 load "common_functions/numMons.m2";
 load "powers_of_lin_pres/base_ideal.m2";
-needsPackage "MonomialOrbits";
+load "orbit_representatives/MonomialOrbits.m2";
+-- needsPackage "MonomialOrbits";
 
 R = QQ[vars(0..(dimRing - 1))];
 B = baseIdeal(R, deg);
@@ -39,14 +40,18 @@ completeFile = "/complete_list.txt";
 linearlyPresentedFile = "/linearly_presented_list.txt";
 linearlyPresentedExponentsFile = "/linearly_presented_exponents_list.txt";
 
+found = false;
+endEarly = false;
+
+L = monomialIdeal B;
+
 for i from 0 to numIters do (
-    found = false;
-    if not endEarly and not found then (
+    if not (endEarly and found) then (
             -- create directory for current number of generators
-        tempDirName := concatenate(myDirectoryName, "/gens", toString(i + numGensBaseIdeal));
+        tempDirName := concatenate(myDirectoryName, "/gens", toString(i + 1 + numGensBaseIdeal));
         if not isDirectory(tempDirName) then mkdir(tempDirName);
 
-        L := orbitRepresentatives(R, B, i:deg);
+        L = orbitRepresentatives(R, L, 1:deg);
         << "#L = " << #L << endl;
 
         
@@ -54,6 +59,7 @@ for i from 0 to numIters do (
         for l in L do (
             ( tempDirName | completeFile) << toString l << endl;
             if isLinearlyPresented l then (
+                found = true;
                 ( tempDirName | linearlyPresentedFile) << toString l << endl;
 
                 -- format and write exponents

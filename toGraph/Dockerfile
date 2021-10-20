@@ -1,10 +1,12 @@
 FROM python:3
 
-WORKDIR /usr/src/app
+WORKDIR /host
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD [ "python", "toGraph.py" ]
+# VOLUME /host
+
+CMD [ "python", "toGraphd4.py" ]
