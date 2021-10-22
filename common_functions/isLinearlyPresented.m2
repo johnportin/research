@@ -1,8 +1,17 @@
-isLinearlyPresented = I -> (
+isLinearlyPresented = method();
+
+isLinearlyPresented (Ideal) := I -> (
   degs := degrees presentation module I;
   degs = unique flatten flatten degs;
-  maxDegree := max apply(degs ** degs, d -> abs(d#0 - d#1));
-  return maxDegree == 1;
+  degs = degs ** degs;
+
+  degs = for d in degs list abs(d#0 - d#1);
+
+  -- print maxDegree;
+
+  -- maxDegree := apply(degs', d -> abs(d#0 - d#1));
+  -- maxDegree = max maxDegree;
+  return max degs == 1;
   )
 
 

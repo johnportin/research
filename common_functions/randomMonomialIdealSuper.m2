@@ -9,7 +9,7 @@ randomMonomialIdealSuper (VisibleList, MonomialIdeal, Ring) := (L, B, R) -> (
   -- sorting lists of length 1)
   -- L' := sort L;
 
-  currentDegree = L#0;
+  currentDegree := L#0;
 
   -- Grab a basis in the first degree
   m := basis(currentDegree, R);
@@ -34,9 +34,9 @@ randomMonomialIdealSuper (VisibleList, MonomialIdeal, Ring, ZZ) := (L, B, R, N) 
     m := basis(L#0, R);
 
     m = set flatten entries m;
-    B = set flatten entries mingens B;
+    B'' := set flatten entries mingens B;
 
-    B' := elements (m - B);
+    B' := elements (m - B'');
 
     -- I = I + ideal( (random missingGens)_{0..(#L - 1)} );
 
