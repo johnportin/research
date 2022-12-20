@@ -1,15 +1,16 @@
-R = QQ[x, y, z];
-myIdeal = (ideal(x, y, z))^2;
+needsPackage "Graphs";
 
-gensList = flatten entries gens myIdeal;
+dualGraph = method();
 
-generatingDegree = (degree gensList_0)_0;
-targetDegree = generatingDegree - 1;
+dualGraph (MonomialIdeal) := (myIdeal) -> (
+    myEdges := {};
+    gensList := flatten entries gens myIdeal;
+    generatingDegree := (degree gensList_0)_0;
+    targetDegree := generatingDegree - 1;
 
-myEdges = [];
-
-for gen1 in gensList do {
-    for gen2 in gensList do {
+    for gens in gensList ** gensList do {
+        gen1 = gens_0;
+        gen2 = gens_1;
         currentEdge = set {gen1, gen2};
         gcdDegree = (degree gcd(gen1, gen2))_0;
         if gcdDegree == targetDegree then {
@@ -17,7 +18,9 @@ for gen1 in gensList do {
                 myEdges = append(myEdges, currentEdge);
             }
         }
-    }
-}
+    };
 
-print myEdges;
+    return graph(myEdges);
+);
+
+

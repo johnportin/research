@@ -1,10 +1,10 @@
-load "host/orbit_representatives/MonomialOrbits.m2";
-load "host/powers_of_lin_pres/base_ideal.m2";
+load "/host/orbit_representatives/MonomialOrbits.m2";
+load "/host/powers_of_lin_pres/base_ideal.m2";
 
 R = QQ[a,b,c];
 
 deg = 8;
-num = 4;
+num = 5;
 I = baseIdeal(R, deg);
 
 

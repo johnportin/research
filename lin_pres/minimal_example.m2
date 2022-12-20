@@ -5,7 +5,7 @@ load "../powers_of_lin_pres/base_ideal.m2";
 
 load "../lin_pres/N_recursion/N.m2";
 
-deg = 10;
+deg = 8;
 
 count = 0;
 found = false;
@@ -19,13 +19,16 @@ B = monomialIdeal baseIdeal(R, deg);
 remainingMons = N(deg) - numgens B;
 
 -- create ideals directory
-myDirectoryName = "./lin_pres/minimal/";
+myDirectoryName = "./minimal/";
 if not isDirectory(myDirectoryName) then mkdir(myDirectoryName);
 
-tempfile = concatenate(myDirectoryName, "degree_", toString deg, "_gens_", toString remainingMons, ".txt");
+tempfile = concatenate(myDirectoryName, "degree_", toString deg, "_gens_", toString (remainingMons + #B), ".txt");
+
+f = openInOut tempfile;
 
 while found == false do (
 
+    clearOutput;
     count = count + 1000;
     if count % 1000 == 0 then print count;
 
@@ -33,11 +36,12 @@ while found == false do (
 
     apply(temp, I -> (
         if isLinearlyPresented I then (
+            print I;
             found = true;
-            print total;
+            -- print total;
 
-            f = tempfile << "";
-            tempfile << toString I << endl;
+            -- f = tempfile << "";
+            f << toString I << endl;
         );
     ))
 
