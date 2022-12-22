@@ -1,5 +1,0 @@
-monomialIdeal(a^8,a^7*b,a^6*b^2,a^5*b^3,a^4*b^4,a^3*b^5,a^2*b^6,a*b^7,b^8,a^7*c,a^6*b*c,b^7*c,a^6*c^2,b^6*c^2,a^5*c^3,b^5*c^3,a^4*c^4,b^4*c^4,a^3*c^5,b^3*c^5,a^2*c^6,b^2*c^6,a*c^7,b*c^7,c^8)
-monomialIdeal(a^8,a^7*b,a^6*b^2,a^5*b^3,a^4*b^4,a^3*b^5,a^2*b^6,a*b^7,b^8,a^7*c,a^5*b^2*c,b^7*c,a^6*c^2,b^6*c^2,a^5*c^3,b^5*c^3,a^4*c^4,b^4*c^4,a^3*c^5,b^3*c^5,a^2*c^6,b^2*c^6,a*c^7,b*c^7,c^8)
-monomialIdeal(a^8,a^7*b,a^6*b^2,a^5*b^3,a^4*b^4,a^3*b^5,a^2*b^6,a*b^7,b^8,a^7*c,a^4*b^3*c,b^7*c,a^6*c^2,b^6*c^2,a^5*c^3,b^5*c^3,a^4*c^4,b^4*c^4,a^3*c^5,b^3*c^5,a^2*c^6,b^2*c^6,a*c^7,b*c^7,c^8)
-monomialIdeal(a^8,a^7*b,a^6*b^2,a^5*b^3,a^4*b^4,a^3*b^5,a^2*b^6,a*b^7,b^8,a^7*c,b^7*c,a^6*c^2,a^4*b^2*c^2,b^6*c^2,a^5*c^3,b^5*c^3,a^4*c^4,b^4*c^4,a^3*c^5,b^3*c^5,a^2*c^6,b^2*c^6,a*c^7,b*c^7,c^8)
-monomialIdeal(a^8,a^7*b,a^6*b^2,a^5*b^3,a^4*b^4,a^3*b^5,a^2*b^6,a*b^7,b^8,a^7*c,b^7*c,a^6*c^2,a^3*b^3*c^2,b^6*c^2,a^5*c^3,b^5*c^3,a^4*c^4,b^4*c^4,a^3*c^5,b^3*c^5,a^2*c^6,b^2*c^6,a*c^7,b*c^7,c^8)
