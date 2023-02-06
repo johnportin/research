@@ -1,5 +1,5 @@
+-- Methods for producing primary monomial ideals of degree d
 primaryMonomialIdeal = method();
-
 primaryMonomialIdeal (ZZ) := (d) -> (
     idealString := "";
     ringVars := flatten entries vars R;
@@ -11,16 +11,33 @@ primaryMonomialIdeal (ZZ) := (d) -> (
     return monomialIdeal idealString;
 );
 
-partitionIdeal = method();
+primaryMonomialIdeal (ZZ, List, PolynomialRing) := (d, varsList, myRing) -> (
+    -- Create a primary ideal in the variables varList each of degree d in the given ring. 
 
+    -- guard statements to make sure list elements are strings represnting variables in the ring
+    if any(varsList, v -> class v =!= String) then throw error "Expected all list elements to be strings";
+    ringVarsList := flatten entries vars myRing;
+    ringVarsList = apply(ringVarsList, v -> toString(v));
+    if not isSubset(varsList, ringVarsList) then throw error "Expected arguments to to contains a list of strings of ring variables";
+
+    idealString := "";
+    for var in varsList do {
+        idealString = concatenate(idealString, toString(var), toString(d), ",");
+    };
+
+    return monomialIdeal idealString;
+) 
+
+-- Returns an ideal equal to the product of frobenius powers of monomial primary ideals
+partitionIdeal = method();
 partitionIdeal (List) := (powers) -> {
     return product(powers, primaryMonomialIdeal);
 }
 
 partitionIdeal(Partition) := (powers) -> {
-    partitionIdeal toList powers;
+    return partitionIdeal toList powers;
 }
 
 partitionIdeal(Array) := (powers) -> {
-    partitionIdeal toList powers;
+    return partitionIdeal toList powers;
 }

@@ -1,5 +1,8 @@
+-- Method used for writing an ideal, its generators, and the missing generators to a file.
+-- Generators and missing generators are written in a way so that they can be interpreted
+-- and iterated over by LuaTex. This is used in the Overleaf project that outputs such
+-- ideals in a file for viewing.
 idealToFile = method();
-
 idealToFile (MonomialIdeal, Ring) := (myIdeal, R) -> (
     myIdealGens := flatten entries gens myIdeal;
 
@@ -34,23 +37,24 @@ idealToFile (MonomialIdeal, Ring, File) := (myIdeal, R, f) -> (
     f << "missing " << demark(",", apply(missingGensExps, e -> expToString(e))) << endl;
 );
 
+-- Returns a list of generators in a way that is interpretable by LuaTex. 
 expToString = method();
 expToString (List) := (expList) -> (
     return demark("/", apply(expList, e -> toString e));
 );
 
 partitionToFile = method();
-
 partitionToFile(ZZ, Ring) := (myInt, myRing) -> {
     myPartitions := partitions myInt;
     partitionIdeals := [];
+    myFile := openOutAppend "output.txt";
+    
     for myPartition in myPartitions do {
         result := ideal 1_myRing;
         apply(myPartition, p -> result = result * primaryMonomialIdeal p);
         partitionIdeals = append(partitionIdeals, {myPartition, monomialIdeal result});
     };
 
-    myFile = openOutAppend "output.txt";
 
     for i in partitionIdeals do {
         myFile << "partition " << toString(toSequence i_0) << endl;
