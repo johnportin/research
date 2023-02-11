@@ -1,5 +1,4 @@
 stronglyDivides = method();
-
 stronglyDivides(RingElement, RingElement) := (mon1, mon2) -> (
     if ring mon1 =!= ring mon2 then {
         print("Monomials are from incomparable rings");
@@ -22,7 +21,6 @@ stronglyDivides(RingElement, RingElement) := (mon1, mon2) -> (
 );
 
 isDominant = method();
-
 isDominant (RingElement, List) := (mon, gens) -> (
     -- Remove mon from gens if necessary
     newGens = delete(mon, gens);

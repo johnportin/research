@@ -1,9 +1,8 @@
 testing = true;
 
 
---   Computes the index of the first occurance of the string sub in string.
+--   Computes the index of the first occurance of the substring in string.
 contains = method();
-
 contains (String, String) := (string, sub) -> (
     i = 0;
     
@@ -23,7 +22,6 @@ contains (String, String) := (string, sub) -> (
 
 --  returns the number of times a particular string occurs in 'string'.
 countTotalSubstrings = method();
-
 countTotalSubstrings (String, String) := (string, sub) -> (
     frontIndex = contains(string, sub);
     count = 0;
