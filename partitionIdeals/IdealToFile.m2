@@ -47,7 +47,7 @@ partitionToFile = method();
 partitionToFile(ZZ, Ring) := (myInt, myRing) -> {
     myPartitions := partitions myInt;
     partitionIdeals := [];
-    myFile := openOutAppend "output.txt";
+    myFile := getOutputFile("output.txt", "data");
     
     for myPartition in myPartitions do {
         result := ideal 1_myRing;
@@ -62,3 +62,11 @@ partitionToFile(ZZ, Ring) := (myInt, myRing) -> {
     };
     close myFile;
 };
+
+-- Methods for dealing with directories and files for output
+getOutputFile = method();
+getOutputFile(String, String) := (fileName, filePath) -> {
+    if not isDirectory filePath then makeDirectory filePath;
+    fullPath := concatenate(filePath, "/", fileName);
+    return openOutAppend(fullPath);
+}
