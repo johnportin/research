@@ -36,15 +36,15 @@ partitionIdealReduce = (degreeList, myRing) -> {
     return -1;
 }
 
-R = QQ[a,b,c];
+-- R = QQ[a,b,c];
 
-L0 = {1,1,1};
-L1 = {5,3,1};
-L2 = {5,2,1,1};
-L3 = {7,2,1};
+-- L0 = {1,1,1};
+-- L1 = {5,3,1};
+-- L2 = {5,2,1,1};
+-- L3 = {7,2,1};
 
-L = {L0, L1, L2, L3};
+-- L = {L0, L1, L2, L3};
 
-for l in L do {
-    print(partitionIdealReduce(l, R))
-}
+-- for l in L do {
+--     print(partitionIdealReduce(l, R))
+-- }
