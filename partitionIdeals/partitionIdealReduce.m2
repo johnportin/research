@@ -18,8 +18,6 @@ partitionIdealReduce = (degreeList, myRing) -> {
     totalDegree := 0;
     sortedDegreeListCopy := sortedDegreeList;
 
-
-
     for i in sortedDegreeList do {
         totalDegree = totalDegree + i;
         M = M * m^i;
@@ -48,3 +46,5 @@ partitionIdealReduce = (degreeList, myRing) -> {
 -- for l in L do {
 --     print(partitionIdealReduce(l, R))
 -- }
+
+
