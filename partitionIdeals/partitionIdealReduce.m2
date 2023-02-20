@@ -21,7 +21,7 @@ partitionIdealReduce = (degreeList, myRing) -> {
     for i in sortedDegreeList do {
         totalDegree = totalDegree + i;
         M = M * m^i;
-        I = I * partitionIdeal({i});
+        I = I * partitionIdeal({i}); 
         totalDegree = totalDegree + i;
 
         if (M != I) then {
