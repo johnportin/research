@@ -202,6 +202,29 @@ orbitRepresentatives(Ring, Ideal, VisibleList) := List => o -> (R, I, degs) -> (
      result/(L -> fromLis(R,L))
     )
 
+orbitRepresentatives(Ring, List, List, ZZ) := List => o -> (R, L1, L2, nums) -> (
+    L1 = L1/(L -> toLis monomialIdeal L);
+    print(L1);
+    L2 = L2/toLis;
+    print(L2);
+
+    n := numgens R;
+    G := permutations n;
+
+    result := L1;
+    for num in 1..nums do( 
+        << "----starting looks for num=" << num << endl;
+	    sumList := for r in result list (
+            print(r, L2);
+            sumMonomialsLis(r, L2)
+        );
+        -- sumList := sumMonomialsLis(L1_0, L2);
+        -- print(#sumList, sumList_0);
+	    result = normalFormsLis(sumList, G);
+    	);
+     result/(L -> fromLis(R,L))
+    )
+
 orbitRepresentatives(Ring, VisibleList) := List => o -> (R, degs) -> (
     ze := monomialIdeal 0_R;
     orbitRepresentatives(R, ze, degs, o)
@@ -252,7 +275,7 @@ sumMonomialsLis(List, List) := List => (L1, L2) -> (
         for m in L2 list if I == {{}} then {m} else
             if notIn(m, I) then sort (I | { m })
             else continue
-            ))
+    ))
 
 normalFormsLis = method()
 normalFormsLis(List, List) := List => (Fs, G) -> (
